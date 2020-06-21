@@ -1,0 +1,116 @@
+@import '../../styles/variables';
+
+.CurrencyItem {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0;
+
+  color: #585858;
+
+  border-bottom: 1px solid $primary;
+
+  &:last-of-type {
+    border-bottom: 0;
+  }
+
+  &--flag {
+    width: 45px;
+    height: 30px;
+
+    margin-right: 10px;
+  }
+
+  &--texts {
+    margin-right: 10px;
+    overflow: hidden;
+
+    &--countryName {
+      margin-bottom: 3px;
+
+      font-size: 14px;
+      font-weight: bold;
+
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    &--currency {
+      font-size: 10px;
+
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+
+  &--exchangeRates {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+
+    &--exchangeRate {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 100px;
+
+      font-size: 14px;
+
+      &--title {
+        margin-bottom: 4px;
+        font-weight: bold;
+      }
+
+      &--value {
+        display: flex;
+        align-items: center;
+
+        &--number {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  @media only screen and (min-width: $mobile) {
+    flex-wrap: nowrap;
+
+    &--flag {
+      width: 70px;
+      height: 47px;
+
+      margin-right: 10px;
+    }
+
+    &--texts {
+      &--countryName {
+        margin-bottom: 5px;
+
+        font-size: 20px;
+      }
+
+      &--currency {
+        font-size: 16px;
+      }
+    }
+
+    &--exchangeRates {
+      &--exchangeRate {
+        min-width: 130px;
+
+        font-size: 18px;
+
+        &--title {
+          margin-bottom: 4px;
+        }
+
+        &--value {
+          &--number {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}

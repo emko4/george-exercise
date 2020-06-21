@@ -15,7 +15,8 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "connected-react-router": "^6.8.0",
-    "country-js": "^0.0.9",
+    "countries-list": "^2.5.4",
+    "country-currency-map": "^2.1.7",
     "history": "^4.10.1",
     "history-prop-types": "^2.5.2",
     "lodash": "^4.17.15",
@@ -47,8 +48,8 @@
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 edge version",
-      "last 1 safari version"
+      "last 1 safari version",
+      "edge 16"
     ]
   }
 }

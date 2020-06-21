@@ -2,7 +2,7 @@ import { SET_LOADING, SET_DATA, SET_HEADER_HEIGHT, LOADER_TYPE } from './constan
 
 const initialState = {
   isLoading: LOADER_TYPE.NONE,
-  fxData: {},
+  fxData: [],
   headerHeight: 0,
 };
 

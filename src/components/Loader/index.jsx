@@ -12,7 +12,7 @@ const Loader = (props) => {
 
   return (
     <div className="Loader">
-      <img src={loader} alt="" />
+      <img src={loader} alt="Loading..." />
     </div>
   );
 };

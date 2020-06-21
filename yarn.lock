@@ -3327,10 +3327,17 @@ cosmiconfig@^6.0.0:
     path-type "^4.0.0"
     yaml "^1.7.2"
 
-country-js@^0.0.9:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/country-js/-/country-js-0.0.9.tgz#1c95f8ffafc16018fc540e8550b1d90c0a729e16"
-  integrity sha512-Fm2Lh3DOywdEZJBJo+IJueUhoAo2uBOmgHZPQncEaVH/LKqFhJqiGj/daBC51lr7JKlrYdN/EpP1tZX6D2A2Ig==
+countries-list@^2.5.4:
+  version "2.5.4"
+  resolved "https://registry.yarnpkg.com/countries-list/-/countries-list-2.5.4.tgz#c1a0ab8f63c0972b266254d63e595ea86a6cfe1e"
+  integrity sha512-6+AIKth3MCOEWTLOVTgR7zTe6oH3JlL0MworsJwIyG0jQi+cKeChOEPvcKszNtGAuCp7p+OrqdxPWxjhu8LqoA==
+
+country-currency-map@^2.1.7:
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/country-currency-map/-/country-currency-map-2.1.7.tgz#5c7d16b4aba42bf2eaa2760fb0856a5dbfd53666"
+  integrity sha512-rc5BDyhghXOrUzlmrwdeRikGXPy9jkOF6Z/ET84u2kvc7hxXUkqfq8VK7PPigK+um6xGPeU+Oz55YJK+Ur5H2Q==
+  dependencies:
+    lodash.findkey "4.6.0"
 
 create-ecdh@^4.0.0:
   version "4.0.3"
@@ -6869,6 +6876,11 @@ lodash._reinterpolate@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
   integrity sha1-DM8tiRZq8Ds2Y8eWU4t1rG4RTZ0=
+
+lodash.findkey@4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/lodash.findkey/-/lodash.findkey-4.6.0.tgz#83058e903b51cbb759d09ccf546dea3ea39c4718"
+  integrity sha1-gwWOkDtRy7dZ0JzPVG3qPqOcRxg=
 
 lodash.memoize@^4.1.2:
   version "4.1.2"
