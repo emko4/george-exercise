@@ -18,7 +18,14 @@
     border: 1px solid $primary;
   }
 
-  .Button {
+  .useRequest {
     margin-left: auto;
+
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .Button {
+    margin-left: 10px;
   }
 }

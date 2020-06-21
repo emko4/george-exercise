@@ -1,10 +1,13 @@
-import { put, delay, takeEvery } from 'redux-saga/effects';
+import { put, call, select, delay, takeEvery } from 'redux-saga/effects';
+import axios from 'axios';
 import isEmpty from 'lodash/isEmpty';
 import trim from 'lodash/trim';
 import { getCurrency } from 'country-currency-map';
 import { countries } from 'countries-list';
 
 import { setLoading, setData } from './actions';
+
+import { getUseRequest } from './selectors';
 
 import { FETCH_FX_DATA, LOADER_TYPE } from './constants';
 
@@ -15,14 +18,32 @@ const countriesArray = Object.keys(countries).map((key) => ({
   ...countries[key],
 }));
 
+function fetchDataFromApi() {
+  return axios.get('https://run.mocky.io/v3/76f262a4-e9d1-47fc-b43f-46e2410de3b0?mocky-delay=1500ms');
+}
+
 function* fetchFxData(_action) {
   const { showLoader, loaderType } = _action;
 
   if (showLoader) yield put(setLoading(loaderType));
 
-  // TODO real fetch
-  yield delay(2500);
-  const data = dataJSON.fx || [];
+  const useRequest = yield select(getUseRequest);
+
+  let data = [];
+  if (useRequest) {
+    try {
+      const result = yield call(fetchDataFromApi);
+
+      data = result?.data?.fx || [];
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error(`API error code ${e?.response?.status || 500}`);
+    }
+  } else {
+    yield delay(2500);
+
+    data = dataJSON.fx || [];
+  }
 
   const amendedData = data.reduce((acc, { currency, precision, nameI18N, exchangeRate: { buy, middle, sell } = {} }) => {
     if (isEmpty(trim(currency))) return acc;

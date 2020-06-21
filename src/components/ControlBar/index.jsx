@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Switch  from 'react-switch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearchDollar, faSync } from '@fortawesome/free-solid-svg-icons'
 
@@ -22,6 +23,12 @@ class ControlBar extends Component {
     push(`#${searchText}`);
   };
 
+  onSwitchClick = (value) => {
+    const { setUseRequest } = this.props;
+
+    setUseRequest(value);
+  };
+
   onReloadClick = () => {
     const { fetchFxData } = this.props;
 
@@ -29,7 +36,7 @@ class ControlBar extends Component {
   };
 
   render() {
-    const { searchText, isLoading, scrollPosition, headerHeight } = this.props;
+    const { searchText, isLoading, scrollPosition, headerHeight, useRequest } = this.props;
 
     return (
       <div
@@ -45,6 +52,41 @@ class ControlBar extends Component {
           onChange={this.onChangeSearch}
           placeholder="Type currency"
         />
+        <div className="useRequest">
+          <Switch
+            checked={useRequest}
+            onChange={this.onSwitchClick}
+            width={80}
+            height={24}
+            onColor="#0e6eb8"
+            checkedIcon={
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "100%",
+                  paddingLeft: "30px",
+                }}
+              >
+                API
+              </div>
+            }
+            uncheckedIcon={
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "100%",
+                  paddingRight: "27px",
+                }}
+              >
+                JSON
+              </div>
+            }
+          />
+        </div>
         <Button
           icon={faSync}
           text="Reload"
@@ -62,7 +104,9 @@ ControlBar.propTypes = {
   isLoading: PropTypes.oneOf(Object.values(LOADER_TYPE)).isRequired,
   scrollPosition: PropTypes.number.isRequired,
   searchText: PropTypes.string.isRequired,
+  setUseRequest: PropTypes.func.isRequired,
   push: PropTypes.func.isRequired,
+  useRequest: PropTypes.bool.isRequired,
 };
 
 export default hocScrollPosition(hocConnect(ControlBar));

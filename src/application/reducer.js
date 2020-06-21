@@ -1,9 +1,10 @@
-import { SET_LOADING, SET_DATA, SET_HEADER_HEIGHT, LOADER_TYPE } from './constants';
+import { SET_LOADING, SET_DATA, SET_HEADER_HEIGHT, SET_USE_REQUEST, LOADER_TYPE } from './constants';
 
 const initialState = {
   isLoading: LOADER_TYPE.NONE,
   fxData: [],
   headerHeight: 0,
+  useRequest: false,
 };
 
 export default (state = initialState, action) => {
@@ -30,6 +31,14 @@ export default (state = initialState, action) => {
       return {
         ...state,
         headerHeight: height,
+      };
+    }
+    case SET_USE_REQUEST: {
+      const { value } = action;
+
+      return {
+        ...state,
+        useRequest: value,
       };
     }
     default:

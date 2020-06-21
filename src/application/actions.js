@@ -1,4 +1,4 @@
-import { FETCH_FX_DATA, SET_LOADING, SET_DATA, SET_HEADER_HEIGHT, LOADER_TYPE } from './constants';
+import { FETCH_FX_DATA, SET_LOADING, SET_DATA, SET_HEADER_HEIGHT, SET_USE_REQUEST, LOADER_TYPE } from './constants';
 
 export const fetchFxData = (showLoader = true, loaderType = LOADER_TYPE.WHOLE_PAGE) => {
   return {
@@ -26,5 +26,12 @@ export const setHeaderHeight = (height) => {
   return {
     type: SET_HEADER_HEIGHT,
     height,
+  };
+};
+
+export const setUseRequest = (value) => {
+  return {
+    type: SET_USE_REQUEST,
+    value,
   };
 };
