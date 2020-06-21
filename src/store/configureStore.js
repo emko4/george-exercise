@@ -20,18 +20,20 @@ export default function configureStore(initialState = {}) {
   // enhancer for production mode
   let enhancer = compose(middleware);
 
-  // eslint-disable-next-line no-underscore-dangle
-  if (window.__REDUX_DEVTOOLS_EXTENSION__) {
-    // enhancer for development mode with DevTool extension
-    enhancer = compose(
-      middleware,
-      // eslint-disable-next-line no-underscore-dangle
-      window.__REDUX_DEVTOOLS_EXTENSION__(),
-    );
-  } else {
-    // enhancer for development mode without DevTool extension
-    // eslint-disable-next-line no-console
-    console.warn("You haven't devTools extension in browser!");
+  if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-underscore-dangle
+    if (window.__REDUX_DEVTOOLS_EXTENSION__) {
+      // enhancer for development mode with DevTool extension
+      enhancer = compose(
+        middleware,
+        // eslint-disable-next-line no-underscore-dangle
+        window.__REDUX_DEVTOOLS_EXTENSION__(),
+      );
+    } else {
+      // enhancer for development mode without DevTool extension
+      // eslint-disable-next-line no-console
+      console.warn("You haven't devTools extension in browser!");
+    }
   }
 
   // Create store
