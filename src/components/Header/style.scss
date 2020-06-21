@@ -1,3 +1,15 @@
-.Header {
+@import '../../styles/variables';
 
+.Header {
+  font-size: 20px;
+  background-color: $primary;
+  color: white;
+
+  @media only screen and (min-width: $mobile) {
+    font-size: 40px;
+  }
+
+  .title {
+    margin-left: 20px;
+  }
 }

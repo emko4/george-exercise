@@ -1,15 +1,21 @@
 import { put, delay, takeEvery } from 'redux-saga/effects';
 
-import { setLoading } from './actions';
+import { setLoading, setData } from './actions';
 
-import { FETCH_FX_DATA } from './constants';
+import { FETCH_FX_DATA, LOADER_TYPE } from './constants';
 
-function* fetchFxData() {
-  yield put(setLoading(true));
+import data from '../assets/data/data.json';
 
-  yield delay(2500); // TODO real fetch
+function* fetchFxData(_action) {
+  const { showLoader, loaderType } = _action;
 
-  yield put(setLoading(false));
+  if (showLoader) yield put(setLoading(loaderType));
+
+  // TODO real fetch
+  yield delay(2500);
+  yield put(setData(data));
+
+  if (showLoader) yield put(setLoading(LOADER_TYPE.NONE));
 
   return null;
 }

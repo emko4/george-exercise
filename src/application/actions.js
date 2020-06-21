@@ -1,14 +1,30 @@
-import { FETCH_FX_DATA, SET_LOADING } from './constants';
+import { FETCH_FX_DATA, SET_LOADING, SET_DATA, SET_HEADER_HEIGHT, LOADER_TYPE } from './constants';
 
-export const fetchFxData = () => {
+export const fetchFxData = (showLoader = true, loaderType = LOADER_TYPE.WHOLE_PAGE) => {
   return {
     type: FETCH_FX_DATA,
+    showLoader,
+    loaderType,
   };
-}
+};
 
 export const setLoading = (value) => {
   return {
     type: SET_LOADING,
     value,
   };
-}
+};
+
+export const setData = (data) => {
+  return {
+    type: SET_DATA,
+    data,
+  };
+};
+
+export const setHeaderHeight = (height) => {
+  return {
+    type: SET_HEADER_HEIGHT,
+    height,
+  };
+};

@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 
 import Loader from '../../components/Loader';
 import Header from '../../components/Header';
-import SearchBar from '../../components/SearchBar';
+import ControlBar from '../../components/ControlBar';
+import List from '../../components/List';
 
 import hocConnect from './hocConnect';
+
+import { LOADER_TYPE } from '../constants';
 
 import './style.scss';
 
@@ -22,9 +25,12 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Loader show={isLoading} />
-        <Header />
-        <SearchBar />
+        <Loader show={isLoading === LOADER_TYPE.WHOLE_PAGE} />
+        <div className="App--frame">
+          <Header />
+          <ControlBar />
+          <List />
+        </div>
       </div>
     );
   };
@@ -32,7 +38,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  isLoading: PropTypes.bool.isRequired,
+  isLoading: PropTypes.oneOf(Object.values(LOADER_TYPE)).isRequired,
   fetchFxData: PropTypes.func.isRequired,
 };
 

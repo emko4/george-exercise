@@ -8,6 +8,9 @@
     "test": "react-scripts test"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.29",
+    "@fortawesome/free-solid-svg-icons": "^5.13.1",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -15,10 +18,13 @@
     "country-js": "^0.0.9",
     "history": "^4.10.1",
     "history-prop-types": "^2.5.2",
+    "lodash": "^4.17.15",
     "node-sass": "^4.14.1",
     "prop-types": "latest",
     "react": "^16.13.1",
+    "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.13.1",
+    "react-measure": "^2.3.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
@@ -41,6 +47,7 @@
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
+      "last 1 edge version",
       "last 1 safari version"
     ]
   }

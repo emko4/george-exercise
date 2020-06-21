@@ -47,19 +47,19 @@ export default function configureStore(initialState = {}) {
   if (module.hot) {
     module.hot.accept('./rootReducer', () => {
       store.replaceReducer(createRootReducer(history))
-    })
-  }
-
-  // Enable Webpack hot module replacement for sagas.
-  module.hot.accept('./rootSaga', () => {
-    // eslint-disable-next-line global-require
-    const getNewSagas = require('./rootSaga').default;
-
-    sagaTask.cancel();
-    sagaTask.done.then(() => {
-      sagaTask = sagaMiddleware.run(getNewSagas);
     });
-  });
+
+    // Enable Webpack hot module replacement for sagas.
+    module.hot.accept('./rootSaga', () => {
+      // eslint-disable-next-line global-require
+      const getNewSagas = require('./rootSaga').default;
+
+      sagaTask.cancel();
+      sagaTask.done.then(() => {
+        sagaTask = sagaMiddleware.run(getNewSagas);
+      });
+    });
+  }
 
   return store;
 }

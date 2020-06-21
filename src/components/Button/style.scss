@@ -1,0 +1,32 @@
+@import '../../styles/variables';
+
+.Button {
+  display: flex;
+  padding: 5px;
+  cursor: pointer;
+
+  background-color: rgba(156, 156, 156, 0.2);
+
+  .text {
+    display: none;
+    margin-left: 10px;
+
+    user-select: none;
+  }
+
+  &:hover {
+    background-color: rgba(156, 156, 156, 0.5);
+  }
+
+  &.rotate > svg {
+    animation: rotation 1000ms infinite linear;
+    animation-fill-mode: backwards;
+  }
+
+  @media only screen and (min-width: $mobile) {
+    .text {
+      display: block;
+    }
+  }
+}
+

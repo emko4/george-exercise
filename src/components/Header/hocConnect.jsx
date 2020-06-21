@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { fetchFxData } from '../actions';
+import { setHeaderHeight } from '../../application/actions';
 
 const mapStateToProps = (state) => ({
-  isLoading: state.application.isLoading,
+  headerHeight: state.application.headerHeight,
 });
 
 const mapDispatchToProps = (dispatch) => (
-  bindActionCreators({ fetchFxData }, dispatch)
+  bindActionCreators({ setHeaderHeight }, dispatch)
 );
 
 export default (InnerComponent) => (
