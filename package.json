@@ -21,7 +21,7 @@
     "country-currency-map": "^2.1.7",
     "history": "^4.10.1",
     "history-prop-types": "^2.5.2",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "node-sass": "^4.14.1",
     "prop-types": "latest",
     "react": "^16.13.1",
