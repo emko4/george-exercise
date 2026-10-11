@@ -8,7 +8,7 @@ import importAllFlags from '../../helpers/importAllFlags';
 
 import './style.scss';
 
-const flags = importAllFlags(require.context('../../assets/flags', false, /\.png$/));
+const flags = importAllFlags(import.meta.glob('../../assets/flags/*.png', { eager: true, import: 'default' }));
 
 const CurrencyItem = (props) => {
   const { item: { currency, currencyName, countryCode, countryName, precision, exchangeRate: { buy, middle, sell } } } = props;

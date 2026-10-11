@@ -1,4 +1,4 @@
-export default (r) => (r.keys().reduce((acc, flagFileName) => ({
+export default (files) => (Object.keys(files).reduce((acc, flagFileName) => ({
   ...acc,
-  [flagFileName.replace(/^\.\//, '').replace(/\.png$/, '')]: r(flagFileName),
+  [flagFileName.replace(/^.*\//, '').replace(/\.png$/, '')]: files[flagFileName],
 }), {}));
