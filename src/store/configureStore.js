@@ -46,19 +46,18 @@ export default function configureStore(initialState = {}) {
   // Run saga middleware with given root saga
   let sagaTask = sagaMiddleware.run(rootSaga);
 
-  if (module.hot) {
-    module.hot.accept('./rootReducer', () => {
-      store.replaceReducer(createRootReducer(history))
+  if (import.meta.hot) {
+    import.meta.hot.accept('./rootReducer', (newModule) => {
+      if (newModule) store.replaceReducer(newModule.default(history));
     });
 
-    // Enable Webpack hot module replacement for sagas.
-    module.hot.accept('./rootSaga', () => {
-      // eslint-disable-next-line global-require
-      const getNewSagas = require('./rootSaga').default;
+    // Enable hot module replacement for sagas.
+    import.meta.hot.accept('./rootSaga', (newModule) => {
+      if (!newModule) return;
 
       sagaTask.cancel();
-      sagaTask.done.then(() => {
-        sagaTask = sagaMiddleware.run(getNewSagas);
+      sagaTask.toPromise().then(() => {
+        sagaTask = sagaMiddleware.run(newModule.default);
       });
     });
   }
